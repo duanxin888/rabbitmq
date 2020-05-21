@@ -1,0 +1,29 @@
+server:
+  port: 8881
+
+spring:
+  rabbitmq:
+    addresses: 192.168.100.152:5672, 192.168.100.153:5672, 192.168.100.154:5672
+    #host: 192.168.100.152
+   # port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    connection-timeout: 15000
+    publisher-returns: true
+    publisher-confirms: true
+    template:
+      mandatory: true
+    listener:
+      simple:
+        auto-startup: false
+
+elastic:
+  job:
+    zk:
+      namespace: elastic-job
+      server-lists: 192.168.100.152:2181,192.168.100.153:2181,192.168.100.154:2181
+
+logging:
+  level:
+    root: info
